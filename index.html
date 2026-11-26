@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#171717"><meta name="description" content="Digital Finish Good QC production record"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="FG Analysis"><meta name="apple-mobile-web-app-status-bar-style" content="default"><title>Finish Good Analysis</title>
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="192x192" href="assets/app-icon-192.png"><link rel="apple-touch-icon" href="assets/app-icon-180.png">
+<style>
+:root{--navy:#171717;--blue:#b8860b;--ink:#242424;--muted:#77736a;--line:#e7dfca;--bg:#f6f3eb;--white:#fff;--green:#477b36;--red:#b43d32;--gold:#f2c94c;--shadow:0 9px 28px rgba(25,22,15,.09)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input,select{font:inherit}button{cursor:pointer;border:0}.app{max-width:1440px;margin:auto;padding:22px}
+header{display:flex;align-items:center;justify-content:space-between;gap:18px;background:linear-gradient(115deg,#171717 0%,#29251a 55%,#b8860b 100%);color:#fff;border:1px solid #4c4020;border-radius:18px;padding:15px 20px;box-shadow:var(--shadow)}
+.brand{display:flex;align-items:center;gap:15px;min-width:0}.brand-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(145deg,#f6d76e,#a87908);color:#171717;display:grid;place-items:center;font-weight:900;font-size:17px;letter-spacing:-1px;box-shadow:inset 0 1px 4px #fff8}.brand img.logo{width:170px;max-height:66px;object-fit:contain;object-position:left center}.brand .appmark{width:48px;height:48px;border-radius:14px;display:none}.brand h1{font-size:18px;margin:0;color:#f7d66b;letter-spacing:.1px}.brand p{margin:2px 0 0;color:#eee3c2;font-size:12px}
+.header-actions{display:flex;align-items:center;gap:9px}.pill{font-size:11px;padding:6px 10px;background:#edf3f9;color:var(--blue);border-radius:99px;font-weight:700}
+nav{display:flex;gap:7px;margin:18px 0;flex-wrap:wrap}.navbtn{padding:10px 15px;border-radius:11px;background:transparent;color:#607086;font-weight:650}.navbtn.active{background:linear-gradient(110deg,#171717,#b8860b);color:#fff;box-shadow:0 5px 14px #8b6b1b35}
+.panel{background:#fff;border:1px solid var(--line);border-radius:17px;padding:20px;box-shadow:var(--shadow);margin-bottom:16px}.panel h2{font-size:17px;margin:0 0 4px;color:#8a6508}.sub{color:var(--muted);font-size:12px;margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.col-12{grid-column:span 12}.col-8{grid-column:span 8}.col-6{grid-column:span 6}.col-4{grid-column:span 4}.col-3{grid-column:span 3}
+.field label{display:block;font-size:12px;font-weight:700;color:#53647a;margin:0 0 6px}.field input,.field select{width:100%;border:1px solid #dce3eb;border-radius:10px;padding:10px 11px;background:#fff;color:var(--ink);outline:none}.field input:focus,.field select:focus{border-color:#5e83ae;box-shadow:0 0 0 3px #244d7d16}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:10px;font-weight:700;font-size:13px;transition:.15s}.btn.primary{background:linear-gradient(110deg,#171717,#a87908);color:#fff}.btn.secondary{background:#edf2f7;color:var(--navy)}.btn.outline{background:#fff;color:var(--navy);border:1px solid #d9e1ea}.btn.green{background:#e8f6ef;color:#11744c}.btn.danger{background:#fff0f0;color:#b23d3d}.btn:disabled{opacity:.5;cursor:not-allowed}
+.drop{border:1.5px dashed #b28a21;background:#fbf8ef;border-radius:14px;padding:22px;text-align:center}.drop strong{display:block;color:var(--navy);margin:7px 0 3px}.drop small{color:var(--muted)}.drop input{display:none}.preview{max-width:100%;max-height:320px;border-radius:12px;border:1px solid var(--line);display:none;margin:14px auto 0}
+.progress{height:7px;background:#e9eef4;border-radius:20px;overflow:hidden;margin:12px 0}.progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#171717,#f2c94c);transition:width .2s}
+.status{font-size:12px;color:var(--muted);margin-top:7px}.notice{background:#fff8e8;border:1px solid #f0dfb8;color:#795b19;padding:11px 13px;border-radius:11px;font-size:12px;margin:12px 0}
+.ocrtext{width:100%;min-height:110px;border:1px solid var(--line);border-radius:10px;padding:10px;font:12px/1.5 ui-monospace,monospace;color:#526174;resize:vertical}
+.shift{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:15px 0}.shift-head{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:linear-gradient(100deg,#202020,#574313);color:#fff;border-bottom:1px solid var(--line)}.shift-head h3{margin:0;color:#f7d66b;font-size:14px}.tablewrap{overflow:auto}
+table{border-collapse:collapse;width:100%;min-width:720px}th,td{border-bottom:1px solid #e9edf2;padding:7px 8px;text-align:center;font-size:12px}th{background:#f4edda;color:#55420c;font-size:11px;white-space:nowrap}td input{width:100%;min-width:48px;border:1px solid transparent;background:transparent;text-align:center;padding:6px 3px;border-radius:6px;color:var(--ink)}td input:focus{outline:none;border-color:#9db3ca;background:#fff}td .linecell{font-weight:800;color:var(--navy);width:48px}.codeinput{min-width:120px;text-align:left;font-weight:650}.empty{text-align:center;color:#8b98a8;padding:25px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.bookhead{text-align:center;padding:5px 0 14px}.bookhead img{width:130px;max-height:58px;object-fit:contain}.bookhead h2{margin:5px 0 0;font-size:18px;letter-spacing:.5px}.bookmeta{display:flex;justify-content:space-between;gap:12px;color:#59697d;font-size:12px;margin:10px 0}
+.settings-row{display:grid;grid-template-columns:1.3fr 1fr 1fr auto;gap:8px;align-items:end;padding:10px 0;border-bottom:1px solid var(--line)}.settings-row input{min-width:0}
+footer{text-align:center;color:#8b98a8;font-size:11px;padding:14px}
+.hidden{display:none!important}.muted{color:var(--muted)}.small{font-size:11px}.inline{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#142b49;color:#fff;padding:11px 16px;border-radius:10px;box-shadow:var(--shadow);z-index:99;display:none;max-width:90vw}
+@media(max-width:760px){.app{padding:12px}.panel{padding:15px}.brand img.logo{width:112px}.brand h1{font-size:15px}.header-actions .pill{display:none}.grid .col-8,.grid .col-6,.grid .col-4,.grid .col-3{grid-column:span 12}.settings-row{grid-template-columns:1fr 1fr}.settings-row .remove{grid-column:span 2}.header-actions{gap:5px}.btn{padding:9px 11px}}
+@media print{body{background:#fff}.app{max-width:none;padding:0}header,nav,.no-print,footer{display:none!important}.panel{box-shadow:none;border:0;padding:0}.shift{break-inside:avoid}.shift-head{background:#eee!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}th{background:#eee!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}td input{border:0;padding:2px}#bookPanel{display:block!important}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+ <div class="brand"><div class="brand-icon">FG</div><div><h1>Finish Good Analysis</h1><p>Digital production record · QC</p></div></div>
+ <div class="header-actions"><span class="pill">FG ANALYSIS</span><button class="btn secondary" id="installApp" hidden>＋ Pasang aplikasi</button><button class="btn outline" id="settingsQuick">⚙ Pengaturan</button></div>
+</header>
+<nav class="no-print">
+ <button class="navbtn active" data-page="inputPage">① Input Jadwal</button>
+ <button class="navbtn" data-page="bookPage">② Buku Digital</button>
+ <button class="navbtn" data-page="settingsPage">③ Pengaturan</button>
+</nav>
+
+<section id="inputPage">
+ <div class="panel">
+  <h2>Input jadwal produksi</h2><p class="sub">Unggah foto jadwal dari QC Field. OCR membaca flavour per baris secara mendatar untuk setiap shift. Hasil tetap wajib diperiksa.</p>
+  <div class="grid">
+   <div class="col-8">
+    <label class="drop" for="scheduleFile" id="dropzone"><span style="font-size:26px">⇧</span><strong>Pilih foto jadwal produksi</strong><small>JPG, PNG, atau WEBP · Foto tegak, terang, dan tidak terpotong memberi hasil lebih baik</small><input id="scheduleFile" type="file" accept="image/*"></label>
+    <img id="preview" class="preview" alt="Pratinjau jadwal">
+    <div class="inline" style="margin-top:12px"><button class="btn primary" id="runOcr" disabled>✦ Baca jadwal dengan OCR</button><button class="btn outline" id="clearUpload">Hapus foto</button></div>
+    <div class="progress"><i id="progressBar"></i></div><div class="status" id="ocrStatus">Belum ada foto yang diproses.</div>
+   </div>
+   <div class="col-4">
+    <div class="field"><label>Hari / Tanggal</label><input id="workDate" type="date"></div><div class="field" style="margin-top:10px"><label>Nomor jadwal</label><input id="scheduleNo" placeholder="Contoh: 274"></div>
+    <div class="notice">Penting: OCR dapat keliru membaca kode flavour, angka, atau posisi shift. Cocokkan setiap baris dengan foto sumber.</div>
+   </div>
+  </div>
+ </div>
+ <div class="panel">
+  <div class="inline" style="justify-content:space-between"><div><h2>Hasil pembacaan OCR</h2><p class="sub">Teks hasil OCR dapat diperiksa atau disalin. Kode flavour diambil mendatar pada baris Line yang sama untuk Shift 1, Shift 2, dan Shift 3.</p></div><button class="btn secondary" id="makeDraft">Buat draft dari teks</button></div>
+  <textarea class="ocrtext" id="ocrText" placeholder="Teks hasil OCR akan muncul di sini. Kamu juga bisa menempelkan teks hasil pembacaan lain."></textarea>
+ </div>
+ <div class="panel">
+  <div class="inline" style="justify-content:space-between"><div><h2>Periksa dan lengkapi data</h2><p class="sub">Pilih shift, pastikan nomor line benar, lalu edit flavour dan nilai kolom bila diperlukan.</p></div><button class="btn outline" id="resetRows">Kosongkan baris</button></div>
+  <div id="editorShifts"></div>
+  <div class="actions"><button class="btn secondary" id="addLine">＋ Tambah baris</button><button class="btn primary" id="saveBook">Simpan ke Buku Digital →</button></div>
+ </div>
+</section>
+
+<section id="bookPage" class="hidden">
+ <div class="panel no-print">
+  <div class="inline" style="justify-content:space-between"><div><h2>Buku Finish Good Digital</h2><p class="sub">Pratinjau hasil pencatatan tiga shift.</p></div><div class="actions"><button class="btn outline" id="printBook">▤ Cetak / PDF</button><button class="btn secondary" id="exportPng">⇩ Simpan gambar</button><button class="btn green" id="shareWA">↗ Bagikan WhatsApp</button></div></div>
+  <div class="notice">Untuk WhatsApp, perangkat akan membuka menu berbagi jika mendukung. Pilih WhatsApp. Jika tidak, unduh gambar lalu lampirkan secara manual.</div>
+ </div>
+ <div class="panel" id="bookPanel">
+  <div class="bookhead"><h2>FINISH GOOD ANALYSIS</h2><div class="muted small">DIVISI NOODLE · PENCATATAN QC</div></div>
+  <div class="bookmeta"><span>Hari / Tanggal: <b id="bookDate">—</b></span><span>Nomor: <b id="bookNo">—</b></span></div>
+  <div id="bookShifts"></div>
+  <div class="small muted" style="text-align:right;margin-top:12px">Dokumen digital · Periksa kembali sebelum digunakan</div>
+ </div>
+</section>
+
+<section id="settingsPage" class="hidden">
+ <div class="panel">
+  <h2>Pengaturan kolom buku</h2><p class="sub">Judul kolom dan nilai awal dapat diubah sesuai format buku yang berlaku.</p>
+  <div class="grid"><div class="col-6 field"><label>Nama kolom kode produk</label><input id="codeHeading" value="Kode Mie"></div><div class="col-6 field"><label>Nama kolom nomor line</label><input id="lineHeading" value="Line"></div></div>
+  <div class="inline" style="justify-content:space-between;margin:16px 0 5px"><b>Kolom tambahan</b><button class="btn secondary" id="addColumn">＋ Tambah kolom</button></div>
+  <div id="columnSettings"></div>
+  <div class="actions" style="margin-top:16px"><button class="btn primary" id="saveSettings">Simpan pengaturan</button><button class="btn outline" id="restoreSettings">Kembalikan default</button></div>
+ </div>
+ <div class="panel"><h2>Data dan privasi</h2><p class="sub">Data buku disimpan pada penyimpanan browser perangkat ini. Tidak ada server atau akun cloud pada versi ini.</p><div class="actions"><button class="btn danger" id="deleteAll">Hapus semua data tersimpan</button></div></div>
+ <div class="panel"><h2>Tentang aplikasi</h2><p class="sub">Finish Good Analysis · alat bantu pencatatan digital. Aplikasi ini bukan sistem resmi perusahaan dan tidak menggantikan prosedur verifikasi QC.</p><div class="small muted">OCR menggunakan Tesseract.js melalui CDN dan memerlukan koneksi internet saat pertama kali memuat mesin OCR.</div>
+ </div>
+</section>
+<footer>Finish Good Analysis · Digital QC Record</footer>
+</div>
+<div id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const roman=[1,2,3,4,5,6,7,8,9,10,11];
+const defaultSettings={codeHeading:"Kode Mie",lineHeading:"Line",columns:[
+ {label:"Kolom 1",initial:"-"},{label:"Kolom 2",initial:"8"},{label:"Kolom 3",initial:""},{label:"Kolom 4",initial:""}
+]};
+let settings=JSON.parse(localStorage.getItem("fg_settings")||"null")||defaultSettings;
+let data={date:"",no:"",shifts:[[],[],[]]};
+let currentImage=null;
+let ocrWords=[];
+const romanName={1:"I",2:"II",3:"III",4:"IV",5:"V",6:"VI",7:"VII",8:"VIII",9:"IX",10:"X",11:"XI"};
+function toast(t){$("toast").textContent=t;$("toast").style.display="block";setTimeout(()=>$("toast").style.display="none",2800)}
+function emptyRow(line){return {line,code:"",values:settings.columns.map(c=>c.initial)}}
+function ensureRows(){data.shifts=data.shifts.map((s,i)=>s||[])}
+function showPage(id){document.querySelectorAll("section[id$='Page']").forEach(x=>x.classList.add("hidden"));$(id).classList.remove("hidden");document.querySelectorAll(".navbtn").forEach(b=>b.classList.toggle("active",b.dataset.page===id));if(id==="bookPage")renderBook();if(id==="settingsPage")renderSettings()}
+document.querySelectorAll(".navbtn").forEach(b=>b.onclick=()=>showPage(b.dataset.page));
+$("settingsQuick").onclick=()=>showPage("settingsPage");
+$("scheduleFile").onchange=e=>{const f=e.target.files[0];if(!f)return;if(!f.type.startsWith("image/")){toast("Pilih file gambar.");return}currentImage=f;const url=URL.createObjectURL(f);$("preview").src=url;$("preview").style.display="block";$("runOcr").disabled=false;$("ocrStatus").textContent="Foto siap diproses.";};
+$("clearUpload").onclick=()=>{$("scheduleFile").value="";$("preview").style.display="none";currentImage=null;$("runOcr").disabled=true;$("progressBar").style.width="0";$("ocrStatus").textContent="Belum ada foto yang diproses."};
+$("runOcr").onclick=async()=>{if(!currentImage)return;if(!window.Tesseract){toast("Mesin OCR belum termuat. Periksa koneksi internet.");return}
+ $("runOcr").disabled=true;$("ocrStatus").textContent="Menyiapkan OCR…";$("progressBar").style.width="3%";
+ try{const worker=await Tesseract.createWorker("eng",1,{logger:m=>{if(m.status){$("ocrStatus").textContent="OCR: "+m.status+(m.progress!==undefined?" · "+Math.round(m.progress*100)+"%":"");if(m.progress!==undefined)$("progressBar").style.width=Math.max(3,m.progress*100)+"%"}}});
+ const result=await worker.recognize(currentImage);await worker.terminate();ocrWords=result.data.words||[];$("ocrText").value=result.data.text;$("progressBar").style.width="100%";$("ocrStatus").textContent="Pembacaan selesai. Periksa teks dan draft sebelum menyimpan.";autoHeader(result.data.text);toast("OCR selesai. Mohon verifikasi hasilnya.");}
+ catch(err){$("ocrStatus").textContent="OCR gagal: "+err.message;toast("OCR gagal. Coba foto yang lebih jelas.");}
+ $("runOcr").disabled=false;
+};
+function autoHeader(t){let m=t.match(/(\d{1,2})[./-](\d{1,2})[./-](20\d{2})/);if(m){$("workDate").value=`${m[3]}-${m[2].padStart(2,"0")}-${m[1].padStart(2,"0")}`}let n=t.match(/(?:Nomor|Nomor\s*:)\s*[:.]?\s*(\d{1,5})/i);if(n)$("scheduleNo").value=n[1]}
+function cleanCode(s){return s.replace(/[|]/g,"I").replace(/\s+/g," ").trim().toUpperCase()}
+function makeDraftFromText(){
+ const text=$("ocrText").value;
+ if(!text.trim() && !ocrWords.length){toast("Belum ada hasil OCR.");return}
+ data={date:$("workDate").value,no:$("scheduleNo").value,shifts:[[],[],[]]};
+ let found=0;
+ // Kunci pembacaan: baca tiap baris tabel secara horizontal.
+ // Temukan label Line I-XI di kolom paling kiri, lalu ambil flavour
+ // dari tiga kolom flavour (Shift 1, Shift 2, Shift 3) pada tinggi baris yang sama.
+ if(ocrWords.length && currentImage){
+   const W=currentImage.naturalWidth || $("preview").naturalWidth || 1;
+   const H=currentImage.naturalHeight || $("preview").naturalHeight || 1;
+   const words=ocrWords.map(w=>({
+     t:(w.text||"").trim().toUpperCase().replace(/[.,:;]+$/,""),
+     x:(w.bbox.x0+w.bbox.x1)/2/W,
+     y:(w.bbox.y0+w.bbox.y1)/2/H,
+     x0:w.bbox.x0/W,x1:w.bbox.x1/W,
+     y0:w.bbox.y0/H,y1:w.bbox.y1/H
+   })).filter(w=>w.t && w.x>=0 && w.x<=1 && w.y>=0 && w.y<=1);
+   const romanMap={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10,XI:11};
+   const anchors=[];
+   for(const w of words){
+     if(w.x>.075 && w.x<.205){
+       const m=w.t.match(/^LINE\s*(XI|VIII|VII|VI|V|IV|III|II|IX|X|I)$/) ||
+               w.t.match(/^(XI|VIII|VII|VI|V|IV|III|II|IX|X|I)$/);
+       if(m){
+         const n=romanMap[m[1]];
+         if(!anchors.some(a=>a.line===n && Math.abs(a.y-w.y)<.012)) anchors.push({line:n,y:w.y});
+       }
+     }
+   }
+   anchors.sort((a,b)=>a.y-b.y);
+   // Flavour cells occupy the first sub-column of each shift; broad windows
+   // tolerate skew/perspective while excluding Output/JK/JA columns.
+   const flavorWindows=[[.165,.285],[.445,.555],[.675,.785]];
+   for(let i=0;i<anchors.length;i++){
+     const a=anchors[i];
+     const prev=anchors[i-1], next=anchors[i+1];
+     const top=prev?(prev.y+a.y)/2:a.y-.021;
+     const bottom=next?(a.y+next.y)/2:a.y+.021;
+     for(let si=0;si<3;si++){
+       const [xmin,xmax]=flavorWindows[si];
+       let cell=words.filter(w=>w.x>=xmin && w.x<=xmax && w.y>=top && w.y<bottom)
+         .filter(w=>!/^(SHIFT|FLAVOUR|OUTPUT|LINE|JK|JA)$/i.test(w.t))
+         .filter(w=>/[A-Z]/.test(w.t));
+       if(!cell.length) continue;
+       // Gabungkan token yang berada pada satu sel yang sama, misalnya "RGKR 120".
+       cell.sort((a,b)=>a.y-b.y || a.x-b.x);
+       const clusters=[];
+       for(const w of cell){
+         let c=clusters.find(c=>Math.abs(c.y-w.y)<.012 && w.x0-c.x1<.035 && w.x1>=c.x0);
+         if(!c){clusters.push({parts:[w.t],y:w.y,x0:w.x0,x1:w.x1});}
+         else{c.parts.push(w.t);c.x0=Math.min(c.x0,w.x0);c.x1=Math.max(c.x1,w.x1);}
+       }
+       const codes=clusters.map(c=>c.parts.join(" ").replace(/\s+/g," ").trim())
+         .filter(t=>/^[A-Z]{2,7}(?:\s+\d{2,3})?$/.test(t));
+       for(const code of codes){
+         data.shifts[si].push({...emptyRow(a.line),code});
+         found++;
+       }
+     }
+   }
+ }
+ // Tanpa koordinat kata, jangan menebak shift dari urutan teks OCR.
+ data.date=$("workDate").value;data.no=$("scheduleNo").value;
+ renderEditors();
+ toast(found?`Terbaca ${found} kode flavour berdasarkan posisi mendatar per line dan shift. Cocokkan dengan foto.`:"Label line/flavour belum terbaca cukup jelas. Silakan isi manual; OCR tidak akan menebak shift.");
+}
+$("makeDraft").onclick=makeDraftFromText;
+function renderEditors(){
+ const root=$("editorShifts");root.innerHTML="";
+ data.shifts.forEach((rows,si)=>{
+  const wrap=document.createElement("div");wrap.className="shift";
+  wrap.innerHTML=`<div class="shift-head"><h3>SHIFT ${si+1}</h3><button class="btn secondary addHere" data-shift="${si}">＋ Baris</button></div><div class="tablewrap"><table><thead><tr><th>${settings.lineHeading}</th><th>${settings.codeHeading}</th>${settings.columns.map(c=>`<th>${esc(c.label)}</th>`).join("")}<th>Aksi</th></tr></thead><tbody></tbody></table></div>`;
+  const body=wrap.querySelector("tbody");
+  rows.sort((a,b)=>a.line-b.line).forEach((r,ri)=>{const tr=document.createElement("tr");tr.innerHTML=`<td><input class="linecell" type="number" min="1" max="11" value="${r.line}" aria-label="Line"></td><td><input class="codeinput" value="${esc(r.code)}" placeholder="Kode flavour"></td>${settings.columns.map((c,ci)=>`<td><input value="${esc(r.values[ci]??"")}" data-col="${ci}"></td>`).join("")}<td><button class="btn danger remove" style="padding:5px 8px">×</button></td>`;
+   tr.querySelectorAll("input").forEach((inp,ii)=>inp.onchange=()=>{if(ii===0)r.line=Math.max(1,Math.min(11,Number(inp.value)||1));else if(ii===1)r.code=inp.value.toUpperCase();else r.values[ii-2]=inp.value;});
+   tr.querySelector(".remove").onclick=()=>{rows.splice(ri,1);renderEditors()};body.appendChild(tr);
+  });
+  if(!rows.length)body.innerHTML=`<tr><td colspan="${settings.columns.length+3}" class="empty">Belum ada data pada shift ini.</td></tr>`;
+  root.appendChild(wrap);
+ });
+ root.querySelectorAll(".addHere").forEach(b=>b.onclick=()=>{data.shifts[Number(b.dataset.shift)].push(emptyRow(1));renderEditors()});
+}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+$("addLine").onclick=()=>{data.shifts[0].push(emptyRow(1));renderEditors()};
+$("resetRows").onclick=()=>{if(confirm("Kosongkan seluruh baris pada tiga shift?")){data.shifts=[[],[],[]];renderEditors()}};
+$("saveBook").onclick=()=>{readEditorValues();data.date=$("workDate").value;data.no=$("scheduleNo").value;localStorage.setItem("fg_current",JSON.stringify(data));renderBook();showPage("bookPage");toast("Data buku disimpan pada perangkat ini.")};
+function readEditorValues(){document.querySelectorAll("#editorShifts .shift").forEach((wrap,si)=>{let rows=[];wrap.querySelectorAll("tbody tr").forEach(tr=>{const ins=tr.querySelectorAll("input");if(!ins.length)return;rows.push({line:Math.max(1,Math.min(11,Number(ins[0].value)||1)),code:ins[1].value.trim().toUpperCase(),values:Array.from(ins).slice(2).map(x=>x.value)})});data.shifts[si]=rows})}
+function renderBook(){
+ const saved=JSON.parse(localStorage.getItem("fg_current")||"null");if(saved)data=saved;
+ $("bookDate").textContent=data.date?new Date(data.date+"T00:00:00").toLocaleDateString("id-ID",{weekday:"long",day:"2-digit",month:"long",year:"numeric"}):"—";
+ $("bookNo").textContent=data.no||"—";
+ $("bookShifts").innerHTML="";
+ data.shifts.forEach((rows,si)=>{const div=document.createElement("div");div.className="shift";div.innerHTML=`<div class="shift-head"><h3>SHIFT ${si+1}</h3><span class="small muted">${rows.length} baris</span></div><div class="tablewrap"><table><thead><tr><th>${esc(settings.lineHeading)}</th><th>${esc(settings.codeHeading)}</th>${settings.columns.map(c=>`<th>${esc(c.label)}</th>`).join("")}</tr></thead><tbody>${rows.length?rows.slice().sort((a,b)=>a.line-b.line).map(r=>`<tr><td><b>${r.line}</b></td><td style="font-weight:700;text-align:left">${esc(r.code)}</td>${settings.columns.map((c,i)=>`<td>${esc(r.values?.[i]??"")}</td>`).join("")}</tr>`).join(""):`<tr><td colspan="${settings.columns.length+2}" class="empty">Tidak ada data</td></tr>`}</tbody></table></div>`;$("bookShifts").appendChild(div)});
+}
+function renderSettings(){
+ $("codeHeading").value=settings.codeHeading;$("lineHeading").value=settings.lineHeading;
+ $("columnSettings").innerHTML="";
+ settings.columns.forEach((c,i)=>{const row=document.createElement("div");row.className="settings-row";row.innerHTML=`<div class="field"><label>Judul kolom ${i+1}</label><input class="colLabel" value="${esc(c.label)}"></div><div class="field"><label>Nilai awal</label><input class="colInitial" value="${esc(c.initial)}"></div><div class="field"><label>Contoh</label><input value="${esc(c.initial)}" disabled></div><button class="btn danger remove">Hapus</button>`;row.querySelector(".remove").onclick=()=>{if(settings.columns.length<=1){toast("Minimal satu kolom tambahan.");return}settings.columns.splice(i,1);renderSettings()};$("columnSettings").appendChild(row)});
+}
+$("addColumn").onclick=()=>{settings.columns.push({label:"Kolom "+(settings.columns.length+1),initial:""});renderSettings()};
+$("saveSettings").onclick=()=>{settings.codeHeading=$("codeHeading").value||"Kode Mie";settings.lineHeading=$("lineHeading").value||"Line";settings.columns=Array.from(document.querySelectorAll(".settings-row")).map(r=>({label:r.querySelector(".colLabel").value||"Kolom",initial:r.querySelector(".colInitial").value}));localStorage.setItem("fg_settings",JSON.stringify(settings));data.shifts=data.shifts.map(rows=>rows.map(r=>({...r,values:settings.columns.map((c,i)=>r.values?.[i]??c.initial)})));localStorage.setItem("fg_current",JSON.stringify(data));renderEditors();toast("Pengaturan disimpan.")};
+$("restoreSettings").onclick=()=>{if(confirm("Kembalikan judul dan kolom ke pengaturan awal?")){settings=JSON.parse(JSON.stringify(defaultSettings));localStorage.setItem("fg_settings",JSON.stringify(settings));renderSettings();renderEditors()}};
+$("deleteAll").onclick=()=>{if(confirm("Hapus semua data dan pengaturan aplikasi pada browser ini?")){localStorage.removeItem("fg_current");localStorage.removeItem("fg_settings");settings=JSON.parse(JSON.stringify(defaultSettings));data={date:"",no:"",shifts:[[],[],[]]};renderSettings();renderEditors();toast("Data lokal dihapus.")}};
+$("printBook").onclick=()=>window.print();
+async function makePng(){if(!window.html2canvas){toast("Fitur gambar belum termuat. Periksa koneksi.");return null}const node=$("bookPanel");const canvas=await html2canvas(node,{scale:2,backgroundColor:"#ffffff",useCORS:true});return await new Promise(resolve=>canvas.toBlob(resolve,"image/png"))}
+$("exportPng").onclick=async()=>{try{const blob=await makePng();if(!blob)return;const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=`Finish-Good-${data.date||"tanggal"}-No-${data.no||"NA"}.png`;a.click();URL.revokeObjectURL(url);toast("Gambar berhasil dibuat.")}catch(e){toast("Gagal membuat gambar: "+e.message)}};
+$("shareWA").onclick=async()=>{try{const blob=await makePng();if(!blob)return;const file=new File([blob],`Finish-Good-${data.date||"hasil"}.png`,{type:"image/png"});if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:"Finish Good Analysis",text:`Finish Good Analysis · ${data.date||""} · Nomor ${data.no||"-"}`});}else{const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=file.name;a.click();URL.revokeObjectURL(url);window.open("https://wa.me/?text="+encodeURIComponent("Hasil Finish Good Analysis sudah diunduh. Silakan lampirkan gambar PNG yang baru disimpan."),"_blank");toast("Gambar diunduh. Lampirkan gambar tersebut di WhatsApp.")}}catch(e){if(e.name!=="AbortError")toast("Berbagi dibatalkan atau tidak didukung perangkat.")}};
+function init(){const saved=JSON.parse(localStorage.getItem("fg_current")||"null");if(saved){data=saved;$("workDate").value=data.date||"";$("scheduleNo").value=data.no||""}else data.shifts=[[],[],[]];renderEditors()}
+init();
+</script>
+
+<script>
+let deferredInstallPrompt = null;
+const installButton = document.getElementById("installApp");
+window.addEventListener("beforeinstallprompt", event => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  if (installButton) installButton.hidden = false;
+});
+if (installButton) installButton.addEventListener("click", async () => {
+  if (!deferredInstallPrompt) {
+    alert("Jika tombol pemasangan belum tersedia, buka menu Chrome (⋮), lalu pilih Tambahkan ke layar utama atau Install app.");
+    return;
+  }
+  deferredInstallPrompt.prompt();
+  await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt = null;
+  installButton.hidden = true;
+});
+window.addEventListener("appinstalled", () => {
+  if (installButton) installButton.hidden = true;
+});
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(err => console.warn("Service worker:", err)));
+}
+</script>
+
+</body></html>

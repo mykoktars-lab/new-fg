@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<rect width="512" height="512" rx="112" fill="#102f59"/>
+<rect x="54" y="54" width="404" height="404" rx="82" fill="none" stroke="#ffffff" stroke-opacity=".18" stroke-width="8"/>
+<path d="M140 145h232v42H140zM140 225h232v42H140zM140 305h145v42H140z" fill="#fff"/>
+<path d="M335 294l31 31 62-72" fill="none" stroke="#8bd3b2" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="256" y="420" text-anchor="middle" font-family="Arial,sans-serif" font-size="38" font-weight="700" fill="#fff">FG</text>
+</svg>
