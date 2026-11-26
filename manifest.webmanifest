@@ -1,32 +1,22 @@
 {
-  "id": "./",
   "name": "Finish Good Analysis",
   "short_name": "FG Analysis",
-  "description": "Digital Finish Good QC production record",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "orientation": "any",
-  "background_color": "#f4f6f9",
-  "theme_color": "#102f59",
+  "background_color": "#f6f3eb",
+  "theme_color": "#171717",
+  "description": "Digital Finish Good QC production record",
   "icons": [
     {
       "src": "assets/app-icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     },
     {
       "src": "assets/app-icon-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "assets/app-icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+      "type": "image/png"
     }
   ]
 }
